@@ -31,7 +31,7 @@ LEDA_SENSORS = []
 
 STATUS_START1=b'\x0e'
 STATUS_START2=b'\xff'
-STATUS_END=int(55)
+STATUS_END=int(56)
 
 class LedatronicComm:
     def __init__(self, host, port):
@@ -79,7 +79,7 @@ class LedatronicComm:
                     raise Exception("Interrupted");
                 data += next;
             
-            if data[8] == 0:
+            if data[55] == 0:
                 self.current_temp = data[1];
             else:
                 self.current_temp = data[1] + 255;
