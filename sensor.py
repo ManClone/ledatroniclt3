@@ -46,6 +46,7 @@ class LedatronicComm:
         self.puffer_oben = None;
         self.vorlauf_temp = None;
         self.schorn_temp = None;
+        self.ventilator = None;
 
     def update(self):
         # update at most every 10 seconds
@@ -107,6 +108,7 @@ class LedatronicComm:
             self.puffer_oben = data[36];
             self.vorlauf_temp = data[37];
             self.schorn_temp = data[47];
+            self.ventilator = data[50];
 
             break;
 
@@ -124,6 +126,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     LEDA_SENSORS.append(LedatronicPufferOben(comm))
     LEDA_SENSORS.append(LedatronicVorlaufTemp(comm))
     LEDA_SENSORS.append(LedatronicSchornTemp(comm))
+    LEDA_SENSORS.append(LedatronicVentilator(comm))
     add_entities(LEDA_SENSORS)
 
 class LedatronicTemperatureSensor(Entity):
@@ -321,6 +324,30 @@ class LedatronicSchornTemp(Entity):
     def unit_of_measurement(self):
         """Return the unit of measurement of this entity, if any."""
         return TEMP_CELSIUS;
+
+    def update(self):
+        """Retrieve latest state."""
+        try:
+            self.comm.update();
+        except Exception:
+            _LOGGER.error("Failed to get LEDATRONIC LT3 Wifi state.")
+
+class LedatronicVentilator(Entity):
+    """Representation of the LedaTronic valve sensor."""
+
+    def __init__(self, comm):
+        """Initialize the sensor."""
+        self.comm = comm;
+
+    @property
+    def name(self):
+        """Return the name of this sensor."""
+        return "ledatronic_ventilator"
+
+    @property
+    def state(self):
+        """Return the current state of the entity."""
+        return self.comm.ventilator;
 
     def update(self):
         """Retrieve latest state."""
