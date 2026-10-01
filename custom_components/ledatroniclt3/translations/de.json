@@ -12,9 +12,15 @@
           "port": "Standardmäßig 10001."
         }
       },
+      "import": {
+        "title": "YAML-Konfiguration übernehmen"
+      },
       "reconfigure": {
         "title": "Verbindungseinstellungen ändern",
-        "data": { "host": "Hostname oder IP-Adresse", "port": "TCP-Port" }
+        "data": {
+          "host": "Hostname oder IP-Adresse",
+          "port": "TCP-Port"
+        }
       }
     },
     "error": {
