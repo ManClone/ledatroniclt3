@@ -39,7 +39,6 @@ SENSORS = (
     SensorEntityDescription(
         key="current_temp",
         translation_key="current_temp",
-        suggested_object_id="ledatronic_temp",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
@@ -48,13 +47,11 @@ SENSORS = (
     SensorEntityDescription(
         key="current_state",
         translation_key="current_state",
-        suggested_object_id="ledatronic_state",
         icon="mdi:fireplace",
     ),
     SensorEntityDescription(
         key="current_valve_pos_target",
         translation_key="current_valve_pos_target",
-        suggested_object_id="ledatronic_valve",
         native_unit_of_measurement=PERCENTAGE,
         state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:valve",
@@ -62,7 +59,6 @@ SENSORS = (
     SensorEntityDescription(
         key="current_valve_pos_actual",
         translation_key="current_valve_pos_actual",
-        suggested_object_id="ledatronic_valve_actual",
         native_unit_of_measurement=PERCENTAGE,
         state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:valve-open",
@@ -70,7 +66,6 @@ SENSORS = (
     SensorEntityDescription(
         key="max_temp",
         translation_key="max_temp",
-        suggested_object_id="ledatronic_maxtemp",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
@@ -79,7 +74,6 @@ SENSORS = (
     SensorEntityDescription(
         key="grundglut",
         translation_key="grundglut",
-        suggested_object_id="ledatronic_grundglut",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
@@ -88,25 +82,21 @@ SENSORS = (
     SensorEntityDescription(
         key="trend",
         translation_key="trend",
-        suggested_object_id="ledatronic_trend",
         icon="mdi:chart-line",
     ),
     SensorEntityDescription(
         key="abbrande",
         translation_key="abbrande",
-        suggested_object_id="ledatronic_abbrande",
         icon="mdi:counter",
     ),
     SensorEntityDescription(
         key="heizfehler",
         translation_key="heizfehler",
-        suggested_object_id="ledatronic_heizfehler",
         icon="mdi:alert-circle-outline",
     ),
     SensorEntityDescription(
         key="puffer_unten",
         translation_key="puffer_unten",
-        suggested_object_id="ledatronic_puffer_unten",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
@@ -115,7 +105,6 @@ SENSORS = (
     SensorEntityDescription(
         key="puffer_oben",
         translation_key="puffer_oben",
-        suggested_object_id="ledatronic_puffer_oben",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
@@ -124,7 +113,6 @@ SENSORS = (
     SensorEntityDescription(
         key="vorlauf_temp",
         translation_key="vorlauf_temp",
-        suggested_object_id="ledatronic_vorlauf_temp",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
@@ -133,7 +121,6 @@ SENSORS = (
     SensorEntityDescription(
         key="schorn_temp",
         translation_key="schorn_temp",
-        suggested_object_id="ledatronic_schorn_temp",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
@@ -142,7 +129,6 @@ SENSORS = (
     SensorEntityDescription(
         key="ventilator",
         translation_key="ventilator",
-        suggested_object_id="ledatronic_ventilator",
         icon="mdi:fan",
     ),
 )
