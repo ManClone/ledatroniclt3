@@ -67,29 +67,38 @@ class LedatronicConfigFlow(ConfigFlow, domain=DOMAIN):
             data={CONF_HOST: host, CONF_PORT: port},
         )
 
-    @staticmethod
-    @callback
-    def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlow:
-        """Return the options flow."""
-        return LedatronicOptionsFlow(config_entry)
-
-
-class LedatronicOptionsFlow(OptionsFlow):
-    """Allow editing the controller network address."""
-
-    def __init__(self, config_entry: ConfigEntry) -> None:
-        """Store the config entry."""
-        self.config_entry = config_entry
-
-    async def async_step_init(
+    async def async_step_reconfigure(
         self, user_input: dict[str, Any] | None = None
     ) -> dict[str, Any]:
-        """Update the host and port."""
+        """Update the host or port for an existing entry."""
+        entry = self._get_reconfigure_entry()
+        errors: dict[str, str] = {}
         if user_input is not None:
-            return self.async_create_entry(title="", data=user_input)
+            host = user_input[CONF_HOST].strip()
+            port = user_input[CONF_PORT]
+            new_unique_id = f"{host.lower()}:{port}"
+            if any(
+                other.entry_id != entry.entry_id
+                and other.unique_id == new_unique_id
+                for other in self.hass.config_entries.async_entries(DOMAIN)
+            ):
+                errors["base"] = "already_configured"
+            else:
+                try:
+                    await self.hass.async_add_executor_job(fetch_status, host, port)
+                except (OSError, TimeoutError, ValueError):
+                    errors["base"] = "cannot_connect"
+                else:
+                    return self.async_update_reload_and_abort(
+                        entry,
+                        data_updates={CONF_HOST: host, CONF_PORT: port},
+                        unique_id=new_unique_id,
+                    )
+
         return self.async_show_form(
-            step_id="init",
+            step_id="reconfigure",
             data_schema=self.add_suggested_values_to_schema(
-                STEP_USER_SCHEMA, self.config_entry.data
+                STEP_USER_SCHEMA, entry.data
             ),
+            errors=errors,
         )
