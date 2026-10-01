@@ -34,7 +34,7 @@
   "entity": {
     "binary_sensor": {
       "heating_fault": {
-        "name": "Heating fault active"
+        "name": "Heating fault"
       },
       "door_open": {
         "name": "Firebox door open"
@@ -57,7 +57,7 @@
         "name": "Maximum temperature"
       },
       "grundglut": {
-        "name": "Ember-bed temperature"
+        "name": "Ember bed"
       },
       "trend": {
         "name": "Temperature trend (raw value)"
@@ -81,7 +81,7 @@
         "name": "Flue temperature"
       },
       "ventilator": {
-        "name": "Fan status"
+        "name": "Fan"
       }
     }
   }
