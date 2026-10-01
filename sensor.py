@@ -76,47 +76,45 @@ class LedatronicComm:
 
                 break
 
-        self.current_temp = data[1] + (data[55] * 255);
-        
-            self.current_valve_pos_target = data[2];
-            self.current_valve_pos_actual = data[3];
+        self.current_temp = data[1] + (data[55] * 255)
+        self.current_valve_pos_target = data[2]
+        self.current_valve_pos_actual = data[3]
 
-            stateVal = data[4];
-            if stateVal == 0:
-                self.current_state = "Bereit";
-            elif stateVal == 2:
-                self.current_state = "Anheizen";
-            elif stateVal == 3 or stateVal == 4:
-                self.current_state = "Heizbetrieb";
-            elif stateVal == 7 or stateVal == 8:
-                self.current_state = "Grundglut";
-            elif stateVal == 97:
-                self.current_state = "Heizfehler";
-            elif stateVal == 98:
-                self.current_state = "Tuer offen";
-            else:
-                self.current_state = "Unbekannter Status: " + str(stateVal);
+        state_val = data[4]
+        if state_val == 0:
+            self.current_state = "Bereit"
+        elif state_val == 2:
+            self.current_state = "Anheizen"
+        elif state_val in (3, 4):
+            self.current_state = "Heizbetrieb"
+        elif state_val in (7, 8):
+            self.current_state = "Grundglut"
+        elif state_val == 97:
+            self.current_state = "Heizfehler"
+        elif state_val == 98:
+            self.current_state = "Tuer offen"
+        else:
+            self.current_state = "Unbekannter Status: " + str(state_val)
 
-            self.max_temp = data[9] + (data[8] * 255);
-            self.grundglut = data[11];
-            self.trend = data[12];
-            self.abbrande = data[26] + (data[25] * 255);
-            self.heizfehler = data[28] + (data[27] * 255);
-            self.puffer_unten = data[34];
-            self.puffer_oben = data[36];
-            self.vorlauf_temp = data[37];
-            self.schorn_temp = data[47] + (data[46] * 255);
+        self.max_temp = data[9] + (data[8] * 255)
+        self.grundglut = data[11]
+        self.trend = data[12]
+        self.abbrande = data[26] + (data[25] * 255)
+        self.heizfehler = data[28] + (data[27] * 255)
+        self.puffer_unten = data[34]
+        self.puffer_oben = data[36]
+        self.vorlauf_temp = data[37]
+        self.schorn_temp = data[47] + (data[46] * 255)
 
-            self.ventilator = data[50];
-            stateVent = data[50];
-            if stateVent == 0:
-                self.ventilator = "off";
-            elif stateVent == 1:
-                self.ventilator = "on";
-            else:
-                self.ventilator = "unknown"
+        state_vent = data[50]
+        if state_vent == 0:
+            self.ventilator = "off"
+        elif state_vent == 1:
+            self.ventilator = "on"
+        else:
+            self.ventilator = "unknown"
 
-            self.last_update = time.monotonic()
+        self.last_update = time.monotonic()
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the LEDATRONIC LT3 Wifi sensors."""
