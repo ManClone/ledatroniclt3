@@ -11,10 +11,15 @@
           "host": "Netzwerkadresse des LT3-WLAN-Moduls.",
           "port": "Standardmäßig 10001."
         }
+      },
+      "reconfigure": {
+        "title": "Verbindungseinstellungen ändern",
+        "data": { "host": "Hostname oder IP-Adresse", "port": "TCP-Port" }
       }
     },
     "error": {
-      "cannot_connect": "Es konnte kein gültiger Statusdatensatz vom Regler gelesen werden."
+      "cannot_connect": "Es konnte kein gültiger Statusdatensatz vom Regler gelesen werden.",
+      "already_configured": "Dieser Host und Port sind bereits eingerichtet."
     },
     "abort": {
       "already_configured": "Dieser Host und Port sind bereits eingerichtet."
