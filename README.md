@@ -83,4 +83,6 @@ Entity IDs are kept compatible with the legacy installation where Home Assistant
 
 ## Support
 
-If you find this integration useful, you can support its development on [Buy Me a Coffee](https://buymeacoffee.com/clone88).
+If you find this integration useful, you can support its development:
+
+[![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://buymeacoffee.com/clone88)
