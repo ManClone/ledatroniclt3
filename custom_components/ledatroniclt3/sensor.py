@@ -124,7 +124,7 @@ SENSORS = (
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
-        icon="mdi:chimney",
+        icon="mdi:home-roof",
     ),
     SensorEntityDescription(
         key="ventilator",
