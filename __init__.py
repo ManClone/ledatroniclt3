@@ -1,1 +1,0 @@
-''' the ledatroniclt3 component'''

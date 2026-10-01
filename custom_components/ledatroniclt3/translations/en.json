@@ -1,0 +1,56 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to LEDATRONIC LT3",
+        "data": {
+          "host": "Host or IP address",
+          "port": "TCP port"
+        },
+        "data_description": {
+          "host": "The local network address of the LT3 Wi-Fi module.",
+          "port": "Defaults to 10001."
+        }
+      },
+      "import": {
+        "title": "Import YAML configuration"
+      },
+      "reconfigure": {
+        "title": "Update connection details",
+        "data": {
+          "host": "Host or IP address",
+          "port": "TCP port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not read a valid status frame from the controller.",
+      "already_configured": "This host and port are already configured."
+    },
+    "abort": {
+      "already_configured": "This host and port are already configured."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "heating_fault": "Heating fault active",
+      "door_open": "Firebox door open"
+    },
+    "sensor": {
+      "current_temp": "Combustion chamber temperature",
+      "current_state": "Operating state",
+      "current_valve_pos_target": "Air valve position (target)",
+      "current_valve_pos_actual": "Air valve position (actual)",
+      "max_temp": "Maximum temperature",
+      "grundglut": "Ember-bed temperature",
+      "trend": "Temperature trend (raw value)",
+      "abbrande": "Total burns",
+      "heizfehler": "Total heating faults",
+      "puffer_unten": "Buffer tank temperature (lower)",
+      "puffer_oben": "Buffer tank temperature (upper)",
+      "vorlauf_temp": "Heating water flow temperature",
+      "schorn_temp": "Flue temperature",
+      "ventilator": "Fan status"
+    }
+  }
+}

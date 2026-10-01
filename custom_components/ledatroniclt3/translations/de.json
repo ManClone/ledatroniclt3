@@ -1,0 +1,56 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mit LEDATRONIC LT3 verbinden",
+        "data": {
+          "host": "Hostname oder IP-Adresse",
+          "port": "TCP-Port"
+        },
+        "data_description": {
+          "host": "Netzwerkadresse des LT3-WLAN-Moduls.",
+          "port": "Standardmäßig 10001."
+        }
+      },
+      "import": {
+        "title": "YAML-Konfiguration übernehmen"
+      },
+      "reconfigure": {
+        "title": "Verbindungseinstellungen ändern",
+        "data": {
+          "host": "Hostname oder IP-Adresse",
+          "port": "TCP-Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Es konnte kein gültiger Statusdatensatz vom Regler gelesen werden.",
+      "already_configured": "Dieser Host und Port sind bereits eingerichtet."
+    },
+    "abort": {
+      "already_configured": "Dieser Host und Port sind bereits eingerichtet."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "heating_fault": "Heizfehler erkannt",
+      "door_open": "Feuerraumtür offen"
+    },
+    "sensor": {
+      "current_temp": "Brennraumtemperatur",
+      "current_state": "Betriebszustand",
+      "current_valve_pos_target": "Luftklappenstellung (Soll)",
+      "current_valve_pos_actual": "Luftklappenstellung (Ist)",
+      "max_temp": "Maximaltemperatur",
+      "grundglut": "Grundgluttemperatur",
+      "trend": "Temperaturtrend (Rohwert)",
+      "abbrande": "Abbrände gesamt",
+      "heizfehler": "Heizfehler gesamt",
+      "puffer_unten": "Puffertemperatur (unten)",
+      "puffer_oben": "Puffertemperatur (oben)",
+      "vorlauf_temp": "Heizwasser-Vorlauftemperatur",
+      "schorn_temp": "Schornsteintemperatur",
+      "ventilator": "Ventilatorstatus"
+    }
+  }
+}
