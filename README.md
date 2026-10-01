@@ -85,4 +85,4 @@ Entity IDs are kept compatible with the legacy installation where Home Assistant
 
 If you find this integration useful, you can support its development:
 
-[![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://buymeacoffee.com/clone88)
+<a href="https://buymeacoffee.com/clone88"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" width="160"></a>
