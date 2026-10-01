@@ -1,6 +1,11 @@
 # LEDATRONIC LT3 for Home Assistant
 
-<p align="center"><img src="https://raw.githubusercontent.com/ManClone/ledatroniclt3/master/custom_components/ledatroniclt3/brand/logo.png" alt="LEDATRONIC LT3 logo" width="180"></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ManClone/ledatroniclt3/master/custom_components/ledatroniclt3/brand/dark_logo.png">
+    <img src="https://raw.githubusercontent.com/ManClone/ledatroniclt3/master/custom_components/ledatroniclt3/brand/logo.png" alt="LEDA logo" width="406">
+  </picture>
+</p>
 
 Home Assistant custom integration for monitoring a LEDATRONIC LT3 Wi-Fi controller over the local network. The integration reads telemetry only. It does not send commands to the stove or replace the controller's safety functions.
 
