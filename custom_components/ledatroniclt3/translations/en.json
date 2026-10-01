@@ -18,10 +18,15 @@
       "reconfigure": {
         "title": "Update connection details",
         "data": { "host": "Host or IP address", "port": "TCP port" }
+      },
+      "reconfigure": {
+        "title": "Update connection details",
+        "data": { "host": "Host or IP address", "port": "TCP port" }
       }
     },
     "error": {
-      "cannot_connect": "Could not read a valid status frame from the controller."
+      "cannot_connect": "Could not read a valid status frame from the controller.",
+      "already_configured": "This host and port are already configured."
     },
     "abort": {
       "already_configured": "This host and port are already configured."
