@@ -1,6 +1,6 @@
 import logging
 import socket
-import datetime;
+import time
 import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
@@ -11,13 +11,14 @@ import homeassistant.helpers.config_validation as cv
 _LOGGER = logging.getLogger(__name__)
 
 DEFAULT_PORT = 10001
+UPDATE_INTERVAL = 30
+SOCKET_TIMEOUT = 10
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
     vol.Required(CONF_HOST): cv.string,
 })
 
-LEDA_SENSORS = []
 
 STATUS_START1=b'\x0e'
 STATUS_START2=b'\xff'
@@ -44,38 +45,38 @@ class LedatronicComm:
         self.ventilator = None;
 
     def update(self):
-        # update at most every 10 seconds
-        if self.last_update != None and (datetime.datetime.now() - self.last_update) < datetime.timedelta(seconds=30):
-            return;
+        now = time.monotonic()
+        if self.last_update is not None and now - self.last_update < UPDATE_INTERVAL:
+            return
 
-        self.last_update = datetime.datetime.now();
+        # Use a bounded connection and always close it after reading one status frame.
+        with socket.create_connection((self.host, self.port), timeout=SOCKET_TIMEOUT) as sock:
+            sock.settimeout(SOCKET_TIMEOUT)
+            while True:
+                byte = sock.recv(1)
+                if not byte:
+                    raise ConnectionError("Connection closed before status frame")
 
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((self.host, self.port));
+                if byte != STATUS_START1:
+                    continue
 
-        while True:
-            byte = s.recv(1)
-            if byte == b'':
-                raise Exception("Interrupted");
+                byte = sock.recv(1)
+                if not byte:
+                    raise ConnectionError("Connection closed before status frame")
 
-            if byte != STATUS_START1:
-                continue;
+                if byte != STATUS_START2:
+                    continue
 
-            byte = s.recv(1);
-            if byte == b'':
-                raise Exception("Interrupted");
+                data = bytearray()
+                while len(data) < STATUS_END:
+                    chunk = sock.recv(STATUS_END - len(data))
+                    if not chunk:
+                        raise ConnectionError("Incomplete status frame")
+                    data.extend(chunk)
 
-            if byte != STATUS_START2:
-                continue;
-            
-            data = bytearray();
-            while len(data) < STATUS_END:
-                next = s.recv(STATUS_END - len(data));
-                if next == b'':
-                    raise Exception("Interrupted");
-                data += next;
-            
-            self.current_temp = data[1] + (data[55] * 255);
+                break
+
+        self.current_temp = data[1] + (data[55] * 255);
         
             self.current_valve_pos_target = data[2];
             self.current_valve_pos_actual = data[3];
@@ -115,7 +116,7 @@ class LedatronicComm:
             else:
                 self.ventilator = "unknown"
 
-            break;
+            self.last_update = time.monotonic()
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the LEDATRONIC LT3 Wifi sensors."""
@@ -124,20 +125,22 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     comm = LedatronicComm(host, port);
 
-    LEDA_SENSORS.append(LedatronicTemperatureSensor(comm))
-    LEDA_SENSORS.append(LedatronicStateSensor(comm))
-    LEDA_SENSORS.append(LedatronicValveSensor(comm))
-    LEDA_SENSORS.append(LedatronicMaxTemp(comm))
-    LEDA_SENSORS.append(LedatronicGrundglut(comm))
-    LEDA_SENSORS.append(LedatronicTrend(comm))
-    LEDA_SENSORS.append(LedatronicAbbrande(comm))
-    LEDA_SENSORS.append(LedatronicHeizfehler(comm))
-    LEDA_SENSORS.append(LedatronicPufferUnten(comm))
-    LEDA_SENSORS.append(LedatronicPufferOben(comm))
-    LEDA_SENSORS.append(LedatronicVorlaufTemp(comm))
-    LEDA_SENSORS.append(LedatronicSchornTemp(comm))
-    LEDA_SENSORS.append(LedatronicVentilator(comm))
-    add_entities(LEDA_SENSORS)
+    entities = [
+        LedatronicTemperatureSensor(comm),
+        LedatronicStateSensor(comm),
+        LedatronicValveSensor(comm),
+        LedatronicMaxTemp(comm),
+        LedatronicGrundglut(comm),
+        LedatronicTrend(comm),
+        LedatronicAbbrande(comm),
+        LedatronicHeizfehler(comm),
+        LedatronicPufferUnten(comm),
+        LedatronicPufferOben(comm),
+        LedatronicVorlaufTemp(comm),
+        LedatronicSchornTemp(comm),
+        LedatronicVentilator(comm),
+    ]
+    add_entities(entities)
 
 class LedatronicTemperatureSensor(Entity):
     """Representation of the LedaTronic main temperatrure sensor."""
@@ -165,8 +168,8 @@ class LedatronicTemperatureSensor(Entity):
         """Retrieve latest state."""
         try:
             self.comm.update();
-        except Exception:
-            _LOGGER.error("Failed to get LEDATRONIC LT3 Wifi state.")
+        except (OSError, TimeoutError, ConnectionError) as err:
+            _LOGGER.warning("Failed to get LEDATRONIC LT3 Wifi state: %s", err)
 
 class LedatronicStateSensor(Entity):
     """Representation of the LedaTronic state sensor."""
