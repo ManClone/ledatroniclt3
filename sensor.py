@@ -76,7 +76,7 @@ class LedatronicComm:
 
                 break
 
-        self.current_temp = data[1] + (data[55] * 255)
+        self.current_temp = data[1] + (data[55] * 256)
         self.current_valve_pos_target = data[2]
         self.current_valve_pos_actual = data[3]
 
@@ -96,15 +96,15 @@ class LedatronicComm:
         else:
             self.current_state = "Unbekannter Status: " + str(state_val)
 
-        self.max_temp = data[9] + (data[8] * 255)
+        self.max_temp = data[9] + (data[8] * 256)
         self.grundglut = data[11]
         self.trend = data[12]
-        self.abbrande = data[26] + (data[25] * 255)
-        self.heizfehler = data[28] + (data[27] * 255)
+        self.abbrande = data[26] + (data[25] * 256)
+        self.heizfehler = data[28] + (data[27] * 256)
         self.puffer_unten = data[34]
         self.puffer_oben = data[36]
         self.vorlauf_temp = data[37]
-        self.schorn_temp = data[47] + (data[46] * 255)
+        self.schorn_temp = data[47] + (data[46] * 256)
 
         state_vent = data[50]
         if state_vent == 0:
