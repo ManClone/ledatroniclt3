@@ -8,7 +8,6 @@ import voluptuous as vol
 
 from homeassistant.config_entries import ConfigFlow
 from homeassistant.const import CONF_HOST, CONF_PORT
-from homeassistant.core import callback
 
 from .const import DEFAULT_PORT, DOMAIN
 from .coordinator import fetch_status
