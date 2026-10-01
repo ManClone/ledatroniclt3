@@ -10,9 +10,11 @@ from homeassistant.components.sensor import (
     PLATFORM_SCHEMA,
     SensorEntity,
     SensorEntityDescription,
+    SensorDeviceClass,
+    SensorStateClass,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_HOST, CONF_PORT
+from homeassistant.const import CONF_HOST, CONF_PORT, PERCENTAGE, UnitOfTemperature
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.device_registry import DeviceInfo
@@ -38,7 +40,9 @@ SENSORS = (
         key="current_temp",
         translation_key="current_temp",
         suggested_object_id="ledatronic_temp",
-        native_unit_of_measurement="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:thermometer",
     ),
     SensorEntityDescription(
@@ -51,21 +55,25 @@ SENSORS = (
         key="current_valve_pos_target",
         translation_key="current_valve_pos_target",
         suggested_object_id="ledatronic_valve",
-        native_unit_of_measurement="%",
+        native_unit_of_measurement=PERCENTAGE,
         icon="mdi:valve",
     ),
     SensorEntityDescription(
         key="max_temp",
         translation_key="max_temp",
         suggested_object_id="ledatronic_maxtemp",
-        native_unit_of_measurement="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:thermometer-alert",
     ),
     SensorEntityDescription(
         key="grundglut",
         translation_key="grundglut",
         suggested_object_id="ledatronic_grundglut",
-        native_unit_of_measurement="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:fire",
     ),
     SensorEntityDescription(
@@ -90,28 +98,36 @@ SENSORS = (
         key="puffer_unten",
         translation_key="puffer_unten",
         suggested_object_id="ledatronic_puffer_unten",
-        native_unit_of_measurement="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:thermometer",
     ),
     SensorEntityDescription(
         key="puffer_oben",
         translation_key="puffer_oben",
         suggested_object_id="ledatronic_puffer_oben",
-        native_unit_of_measurement="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:thermometer",
     ),
     SensorEntityDescription(
         key="vorlauf_temp",
         translation_key="vorlauf_temp",
         suggested_object_id="ledatronic_vorlauf_temp",
-        native_unit_of_measurement="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:heat-wave",
     ),
     SensorEntityDescription(
         key="schorn_temp",
         translation_key="schorn_temp",
         suggested_object_id="ledatronic_schorn_temp",
-        native_unit_of_measurement="°C",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:chimney",
     ),
     SensorEntityDescription(
