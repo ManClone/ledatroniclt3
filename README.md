@@ -83,3 +83,7 @@ Entity IDs are kept compatible with the legacy installation where Home Assistant
 ## Controller software
 
 [Issue #3](https://github.com/ManClone/ledatroniclt3/issues/3) reports LEDA support's advice to use controller software V34 or newer. Another user reported V30 working with a different component version, so compatibility with older controller versions is not confirmed.
+
+## Support
+
+If you find this integration useful, you can support its development on [Buy Me a Coffee](https://buymeacoffee.com/clone88).
