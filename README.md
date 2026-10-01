@@ -1,37 +1,28 @@
 # LEDATRONIC LT3 for Home Assistant
 
-This custom integration reads status data from a LEDATRONIC LT3 controller over the local network and exposes it as Home Assistant sensors.
+Home Assistant custom integration for monitoring a LEDATRONIC LT3 Wi-Fi controller over the local network. It exposes stove state, chamber and flue temperatures, valve position, buffer temperatures, flow temperature, fan state, and controller counters.
 
-## Requirements
+## Install with HACS
 
-- The controller must be reachable from Home Assistant on the local network.
-- The default TCP port is `10001`.
-- Issue [#3](https://github.com/ManClone/ledatroniclt3/issues/3) reports that LEDATRONIC controller software V34 or newer is required according to LEDA support. Another user reported using V30 with a different version of this component, so compatibility with older controller software is not confirmed.
+1. In HACS, open **Integrations** and choose **Custom repositories** from the menu.
+2. Add `https://github.com/ManClone/ledatroniclt3` with category **Integration**.
+3. Download **LEDATRONIC LT3**, then restart Home Assistant.
+4. Go to **Settings → Devices & services → Add integration**, search for **LEDATRONIC LT3**, and enter the LT3 Wi-Fi module's host and TCP port. The port defaults to `10001`.
+
+This makes the repository installable as a HACS custom repository. Inclusion in HACS's default catalog is a separate submission and review step.
 
 ## Manual installation
 
-1. Create `custom_components/ledatroniclt3` in your Home Assistant configuration directory.
-2. Copy `__init__.py`, `manifest.json`, and `sensor.py` from this repository into that folder.
-3. Add the following to `configuration.yaml`, replacing the example address with the controller's IP address:
+Copy `custom_components/ledatroniclt3` into the `custom_components` folder in your Home Assistant configuration directory, then restart Home Assistant and add the integration from **Settings → Devices & services**.
 
-```yaml
-sensor:
-  - platform: ledatroniclt3
-    host: 192.168.1.100
-    # Optional; defaults to 10001
-    port: 10001
-```
+## Existing YAML installations
 
-4. Restart Home Assistant.
+When the existing YAML sensor platform is detected, Home Assistant imports its host and port into a config entry. After the imported integration is working, remove the old `sensor: - platform: ledatroniclt3` section from `configuration.yaml` and restart Home Assistant.
 
-This integration uses the YAML sensor platform setup present in this repository. The repository does not declare a tested Home Assistant version.
+The entity IDs are kept compatible with the legacy installation where Home Assistant can assign the previous object IDs.
 
-## Sensors
+## Controller compatibility
 
-The integration exposes the controller state, temperatures, valve positions, trend, burn count, heating-error count, and fan status.
+The default TCP port is `10001`. [Issue #3](https://github.com/ManClone/ledatroniclt3/issues/3) reports LEDA support's advice to use controller software V34 or newer. Another user reported V30 working with a different component version. Compatibility with older controller versions is therefore not confirmed.
 
-## Troubleshooting
-
-- Confirm the controller IP address and TCP port are reachable from the Home Assistant host.
-- Check the Home Assistant logs for connection or timeout errors.
-- Confirm the controller software version in the LEDATRONIC app; the reported V34 requirement has not been independently verified here.
+The integration reads telemetry only. It does not send commands to the stove or replace the controller's safety functions.
