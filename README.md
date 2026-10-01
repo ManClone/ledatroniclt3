@@ -2,7 +2,7 @@
 
 <p align="center"><img src="custom_components/ledatroniclt3/brand/icon.png" alt="LEDATRONIC LT3 logo" width="180"></p>
 
-Home Assistant custom integration for monitoring a LEDATRONIC LT3 Wi-Fi controller over the local network. It exposes stove state, chamber and flue temperatures, valve position, buffer temperatures, flow temperature, fan state, and controller counters.
+Home Assistant custom integration for monitoring a LEDATRONIC LT3 Wi-Fi controller over the local network. It exposes stove state, chamber and flue temperatures, valve position, buffer temperatures, flow temperature, fan state, and controller counters. It also provides binary indicators for the heating-fault and firebox-door-open status codes recognized by the current Wi-Fi decoder; detailed alarm causes are not available.
 
 ## Install with HACS
 

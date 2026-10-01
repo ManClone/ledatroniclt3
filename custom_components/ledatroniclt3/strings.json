@@ -32,6 +32,10 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "heating_fault": { "name": "Heating fault active" },
+      "door_open": { "name": "Firebox door open" }
+    },
     "sensor": {
       "current_temp": { "name": "Combustion chamber temperature" },
       "current_state": { "name": "Operating state" },

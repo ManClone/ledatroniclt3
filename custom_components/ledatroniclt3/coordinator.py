@@ -65,6 +65,7 @@ def parse_status(data: bytearray) -> dict[str, Any]:
         "current_temp": data[1] + data[55] * 256,
         "current_valve_pos_target": data[2],
         "current_valve_pos_actual": data[3],
+        "state_code": state_code,
         "current_state": STATE_MAP.get(
             state_code, f"Unbekannter Status: {state_code}"
         ),

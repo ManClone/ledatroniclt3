@@ -32,6 +32,10 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "heating_fault": { "name": "Heizfehler erkannt" },
+      "door_open": { "name": "Feuerraumtür offen" }
+    },
     "sensor": {
       "current_temp": { "name": "Brennraumtemperatur" },
       "current_state": { "name": "Betriebszustand" },
