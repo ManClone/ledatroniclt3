@@ -17,11 +17,10 @@
       },
       "reconfigure": {
         "title": "Update connection details",
-        "data": { "host": "Host or IP address", "port": "TCP port" }
-      },
-      "reconfigure": {
-        "title": "Update connection details",
-        "data": { "host": "Host or IP address", "port": "TCP port" }
+        "data": {
+          "host": "Host or IP address",
+          "port": "TCP port"
+        }
       }
     },
     "error": {
