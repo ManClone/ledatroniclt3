@@ -2,8 +2,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ManClone/ledatroniclt3/c6eeeff886c34a45630f34a74be0c3ada722541c/custom_components/ledatroniclt3/brand/dark_logo.png">
-    <img src="https://raw.githubusercontent.com/ManClone/ledatroniclt3/c6eeeff886c34a45630f34a74be0c3ada722541c/custom_components/ledatroniclt3/brand/logo.png" alt="LEDA logo" width="406">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ManClone/ledatroniclt3/1fbbff5db9ff563eca40d0f97e2d3d5b29c1ef49/custom_components/ledatroniclt3/brand/dark_logo.png">
+    <img src="https://raw.githubusercontent.com/ManClone/ledatroniclt3/1fbbff5db9ff563eca40d0f97e2d3d5b29c1ef49/custom_components/ledatroniclt3/brand/logo.png" alt="LEDA wave mark" width="220">
   </picture>
 </p>
 
