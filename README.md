@@ -14,18 +14,18 @@ The integration polls the controller every 30 seconds and provides the following
 | --- | --- | --- |
 | Combustion chamber temperature | Current temperature reported for the combustion chamber. | °C |
 | Operating state | Current operating state, decoded from the controller status code. | Text; recognized codes are listed below |
-| Air valve target position | Requested position of the combustion-air valve. | % |
-| Air valve actual position | Actual position of the combustion-air valve. | % |
+| Air valve position (target) | Requested position of the combustion-air valve. | % |
+| Air valve position (actual) | Actual position of the combustion-air valve. | % |
 | Maximum temperature | Maximum-temperature value reported by the controller. | °C |
 | Ember bed temperature | Temperature value associated with the ember-bed phase. | °C |
 | Temperature trend (raw value) | Controller trend value. It is exposed as received because its code meanings are not documented. | Raw numeric value |
 | Total burns | Cumulative burn counter. | Count |
-| Heating fault counter | Cumulative number of heating faults. This does not identify the cause of a fault. | Count |
-| Buffer temperature lower | Lower buffer-tank temperature. | °C |
-| Buffer temperature upper | Upper buffer-tank temperature. | °C |
-| Stove flow temperature | Water flow temperature from the stove. | °C |
+| Total heating faults | Cumulative number of heating faults. This does not identify the cause of a fault. | Count |
+| Buffer tank temperature (lower) | Lower buffer-tank temperature. | °C |
+| Buffer tank temperature (upper) | Upper buffer-tank temperature. | °C |
+| Heating water flow temperature | Water flow temperature from the stove. | °C |
 | Flue temperature | Temperature value reported for the flue/chimney. | °C |
-| Fan | Fan state reported by the controller. | `on`, `off`, or `unknown` |
+| Fan status | Fan state reported by the controller. | `on`, `off`, or `unknown` |
 
 The air-valve target sensor also retains the actual position as an `Istposition` state attribute for compatibility with existing dashboards.
 

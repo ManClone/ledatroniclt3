@@ -33,24 +33,24 @@
   },
   "entity": {
     "binary_sensor": {
-      "heating_fault": { "name": "Heizfehler erkannt" },
-      "door_open": { "name": "Feuerraumtür offen" }
+      "heating_fault": "Heizfehler erkannt",
+      "door_open": "Feuerraumtür offen"
     },
     "sensor": {
-      "current_temp": { "name": "Brennraumtemperatur" },
-      "current_state": { "name": "Betriebszustand" },
-      "current_valve_pos_target": { "name": "Luftklappe Sollposition" },
-      "current_valve_pos_actual": { "name": "Luftklappe Istposition" },
-      "max_temp": { "name": "Maximaltemperatur" },
-      "grundglut": { "name": "Grundgluttemperatur" },
-      "trend": { "name": "Temperaturtrend (Rohwert)" },
-      "abbrande": { "name": "Abbrände gesamt" },
-      "heizfehler": { "name": "Heizfehler-Zähler" },
-      "puffer_unten": { "name": "Puffertemperatur unten" },
-      "puffer_oben": { "name": "Puffertemperatur oben" },
-      "vorlauf_temp": { "name": "Kamin-Vorlauftemperatur" },
-      "schorn_temp": { "name": "Schornsteintemperatur" },
-      "ventilator": { "name": "Ventilator" }
+      "current_temp": "Brennraumtemperatur",
+      "current_state": "Betriebszustand",
+      "current_valve_pos_target": "Luftklappenstellung (Soll)",
+      "current_valve_pos_actual": "Luftklappenstellung (Ist)",
+      "max_temp": "Maximaltemperatur",
+      "grundglut": "Grundgluttemperatur",
+      "trend": "Temperaturtrend (Rohwert)",
+      "abbrande": "Abbrände gesamt",
+      "heizfehler": "Heizfehler gesamt",
+      "puffer_unten": "Puffertemperatur (unten)",
+      "puffer_oben": "Puffertemperatur (oben)",
+      "vorlauf_temp": "Heizwasser-Vorlauftemperatur",
+      "schorn_temp": "Schornsteintemperatur",
+      "ventilator": "Ventilatorstatus"
     }
   }
 }
