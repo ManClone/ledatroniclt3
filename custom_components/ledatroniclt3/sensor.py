@@ -56,7 +56,16 @@ SENSORS = (
         translation_key="current_valve_pos_target",
         suggested_object_id="ledatronic_valve",
         native_unit_of_measurement=PERCENTAGE,
+        state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:valve",
+    ),
+    SensorEntityDescription(
+        key="current_valve_pos_actual",
+        translation_key="current_valve_pos_actual",
+        suggested_object_id="ledatronic_valve_actual",
+        native_unit_of_measurement=PERCENTAGE,
+        state_class=SensorStateClass.MEASUREMENT,
+        icon="mdi:valve-open",
     ),
     SensorEntityDescription(
         key="max_temp",
