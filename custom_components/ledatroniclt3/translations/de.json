@@ -34,7 +34,7 @@
   "entity": {
     "binary_sensor": {
       "heating_fault": {
-        "name": "Heizfehler erkannt"
+        "name": "Heizfehler"
       },
       "door_open": {
         "name": "Feuerraumtür offen"
@@ -57,7 +57,7 @@
         "name": "Maximaltemperatur"
       },
       "grundglut": {
-        "name": "Grundgluttemperatur"
+        "name": "Grundglut"
       },
       "trend": {
         "name": "Temperaturtrend (Rohwert)"
@@ -81,7 +81,7 @@
         "name": "Schornsteintemperatur"
       },
       "ventilator": {
-        "name": "Ventilatorstatus"
+        "name": "Ventilator"
       }
     }
   }
