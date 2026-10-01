@@ -2,8 +2,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ManClone/ledatroniclt3/master/custom_components/ledatroniclt3/brand/dark_logo.png">
-    <img src="https://raw.githubusercontent.com/ManClone/ledatroniclt3/master/custom_components/ledatroniclt3/brand/logo.png" alt="LEDA logo" width="406">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ManClone/ledatroniclt3/c6eeeff886c34a45630f34a74be0c3ada722541c/custom_components/ledatroniclt3/brand/dark_logo.png">
+    <img src="https://raw.githubusercontent.com/ManClone/ledatroniclt3/c6eeeff886c34a45630f34a74be0c3ada722541c/custom_components/ledatroniclt3/brand/logo.png" alt="LEDA logo" width="406">
   </picture>
 </p>
 
